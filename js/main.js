@@ -138,7 +138,7 @@ function loop() {
             player.attackBox.position.x + player.attackBox.dimensions.w >= enemy.position.x &&
             player.attackBox.position.y + player.attackBox.dimensions.h >= enemy.position.y &&
             player.attackBox.position.y <= enemy.position.y + enemy.dimensions.h) {
-                if (enemy.currentSprite !== enemy.sprites.hit) {
+                if (!enemy.dead && enemy.currentSprite !== enemy.sprites.hit) {
                     enemy.velocity.x = player.facingDirection === 'right' ? 0.5 : -0.5;
                     enemy.hit = true;
                     enemy.health -= 20;
@@ -163,7 +163,7 @@ function loop() {
             enemy.attackBox.position.x + enemy.attackBox.dimensions.w >= player.position.x &&
             enemy.attackBox.position.y + enemy.attackBox.dimensions.h >= player.position.y &&
             enemy.attackBox.position.y <= player.position.y + player.dimensions.h) {
-                if (player.currentSprite !== player.sprites.hit) {
+                if (!player.dead && player.currentSprite !== player.sprites.hit) {
                     player.velocity.x = enemy.facingDirection === 'right' ? 0.5 : -0.5;
                     player.hit = true;
                     player.health -= 20;
